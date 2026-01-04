@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html style="height: 100vh;">
+    <head>
+        <title>Marks/Channels</title>
+        <meta charset="UTF-8">
+        <link rel="icon" href="images/favicon-32x32.png">
+        <link rel="stylesheet" href="styles.css">
+
+    </head>
+    <body style="margin: 0; min-height: 100vh;">
+        <div class="selector" id="level-selector">
+            <label for="level">Level</label>
+            <input type="number" min="1" max="9" id="input-level" value="1" inputmode="numeric">
+        </div>
+        
+        <div class="selector" id="touching-selector">
+            <label for="touching">Touching?</label>
+            <select class="dropdown" name="touching" id="dropdown-touching">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        
+        <div class="selector" id="overlapping-selector">
+            <label for="overlapping">Overlapping?</label>
+            <select class="dropdown" name="overlapping" id="dropdown-overlapping">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        
+        <div class="selector" id="global-layout selector">
+            <label for="global-layout">Global Layout</label>
+            <select class="dropdown" name="global-layout" id="dropdown-global-layout">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="rectilinear">Rectilinear</option>
+                <option value="polar">Polar</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="selector" id="mark-type-selector">
+            <label for="mark-type">Mark Type</label>
+            <select class="dropdown" name="mark-type" id="dropdown-mark-type">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="point">Point</option>
+                <option value="path">Path</option>
+                <option value="poly">Poly</option>
+            </select>
+        </div>
+        
+        <div class="selector channel" id="height-selector">
+            <label for="height">Height</label>
+            <select class="dropdown" name="height" id="dropdown-height">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-height">
+        </div>
+        
+        <div class="selector channel" id="width-selector">
+            <label for="width">Width</label>
+            <select class="dropdown" name="width" id="dropdown-width">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-width">
+        </div>
+        
+        <div class="selector channel" id="horizontal-position-order-selector">
+            <label for="horizontal-position-order">Horizontal Position & Order</label>
+            <select class="dropdown" name="horizontal-position-order" id="dropdown-horizontal-position-order">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-horizontal-position-order">
+        </div>
+        
+        <div class="selector channel" id="horizontal-order-selector">
+            <label for="horizontal-order">Horizontal Order (only)</label>
+            <select class="dropdown" name="horizontal-order" id="dropdown-horizontal-order">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-horizontal-order">
+        </div>
+        
+        <div class="selector channel" id="vertical-position-order-selector">
+            <label for="vertical-position-order">Vertical Position & Order</label>
+            <select class="dropdown" name="vertical-position-order" id="dropdown-vertical-position-order">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-vertical-position-order">
+        </div>
+        
+        <div class="selector channel" id="vertical-order-selector">
+            <label for="vertical-order">Vertical Order (only)</label>
+            <select class="dropdown" name="vertical-order" id="dropdown-vertical-order">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-vertical-order">
+        </div>
+        
+        <div class="selector channel" id="spread-selector">
+            <label for="spread">Spread</label>
+            <select class="dropdown" name="spread" id="dropdown-spread">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-spread">
+        </div>
+        
+        <div class="selector channel" id="span-selector">
+            <label for="span">Span</label>
+            <select class="dropdown" name="span" id="dropdown-span">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-span">
+        </div>
+        
+        <div class="selector channel" id="radial-position-order-selector">
+            <label for="radial-position-order">Radial Position & Order</label>
+            <select class="dropdown" name="radial-position-order" id="dropdown-radial-position-order">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-radial-position-order">
+        </div>
+        
+        <div class="selector channel" id="radial-order-selector">
+            <label for="radial-order">Radial Order (only)</label>
+            <select class="dropdown" name="radial-order" id="dropdown-radial-order">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-radial-order">
+        </div>
+        
+        <div class="selector channel" id="angular-position-order-selector">
+            <label for="angular-position-order">Angular Position & Order</label>
+            <select class="dropdown" name="angular-position-order" id="dropdown-angular-position-order">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-angular-position-order">
+        </div>
+        
+        <div class="selector channel" id="angular-order-selector">
+            <label for="angular-order">Angular Order (only)</label>
+            <select class="dropdown" name="angular-order" id="dropdown-angular-order">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-angular-order">
+        </div>
+        
+        <div class="selector channel" id="orientation-selector">
+            <label for="orientation">Orientation</label>
+            <select class="dropdown" name="orientation" id="dropdown-orientation">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-orientation">
+        </div>
+        
+        <div class="selector channel" id="shape-selector">
+            <label for="shape">Shape</label>
+            <select class="dropdown" name="shape" id="dropdown-shape">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-shape">
+        </div>
+        
+        <div class="selector channel" id="thickness-selector">
+            <label for="thickness">Thickness</label>
+            <select class="dropdown" name="thickness" id="dropdown-thickness">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-thickness">
+        </div>
+        
+        <div class="selector channel" id="area-selector">
+            <label for="area">Area</label>
+            <select class="dropdown" name="area" id="dropdown-area">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-area">
+        </div>
+        
+        <div class="selector channel" id="colour-selector">
+            <label for="colour">Colour</label>
+            <select class="dropdown" name="colour" id="dropdown-colour">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="encoding">Encoding</option>
+                <option value="uniform">Uniform</option>
+            </select>
+            <input class="attribute-name" type="text" name="channel-colour">
+        </div>
+
+        
+        <div class="selector">
+            <input id="clear-button" type="button" value="Clear All Fields" onclick="clearFields()">
+        </div>
+
+        <div id="capture" style="padding: 10px;">
+
+        </div>
+
+        
+        <div class="selector">
+            <input id="download-button" type="button" value="Download Image" onclick="attemptDownload()">
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+			integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+			crossorigin="anonymous"></script>
+        <script src="main.js"></script>
+    </body>
+</html>

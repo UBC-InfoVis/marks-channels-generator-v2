@@ -1,0 +1,1 @@
+A tool for generating tables and unique codes for marks and channels analyses of visualizations.

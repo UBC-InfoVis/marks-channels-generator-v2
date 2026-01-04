@@ -1,0 +1,18 @@
+.selector {
+    margin: 20px 0 20px 20px;
+}
+
+#input-level {
+    position: fixed;
+    left: 225px;
+}
+
+.dropdown {
+    position: fixed;
+    left: 225px;
+}
+
+.attribute-name {
+    position: fixed;
+    left: 350px;
+}
