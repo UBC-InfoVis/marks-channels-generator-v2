@@ -132,7 +132,7 @@ const checkInputs = () => {
             visibleChannels.push("vertical-order");
         }
     } else if (markType === "point" && globalLayout === "polar") {
-        visibleChannels = ["height", "width", "radial-position-order", "angular-position-order", "orientation", "colour"];
+        visibleChannels = ["spread", "span", "radial-position-order", "angular-position-order", "orientation", "colour"];
         if ($("#dropdown-radial-position-order").val() === "uniform") {
             visibleChannels.push("radial-order");
         }
