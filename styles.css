@@ -12,7 +12,16 @@
     left: 225px;
 }
 
+#mark-name {
+    position: fixed;
+    left: 350px;
+}
+
 .attribute-name {
     position: fixed;
     left: 350px;
+}
+
+td {
+    padding: 5px;
 }

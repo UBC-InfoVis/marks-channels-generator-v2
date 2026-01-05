@@ -37,7 +37,8 @@ const setInputs = () => {
     $("#dropdown-touching").val(binaryMap[values[1]]);
     $("#dropdown-overlapping").val(binaryMap[values[2]]);
     $("#dropdown-global-layout").val(globalLayoutMap[values[3]]);
-    $("#dropdown-mark-type").val(markTypeMap[values[4]]);
+    $("#dropdown-mark-type").val(markTypeMap[values[4].substring(0, 1)]);
+    $("#mark-name").val(values[4].substring(2, values[4].length - 1));
     $(".channel").each(function(index) {
         $($(this).children()[1]).val(channelMap[values[5 + index].substring(0, 1)]);
         if (values[5 + index].length > 1) {
@@ -56,6 +57,7 @@ const generateCode = (visibleChannels) => {
     code += $("#dropdown-overlapping").val().substring(0, 1) + "-";
     code += $("#dropdown-global-layout").val().substring(0, 1) + "-";
     code += $("#dropdown-mark-type").val().substring(2, 3);
+    code += "(" + $("#mark-name").val().trim() + ")";
     $(".channel").each(function() {
         const channel = $(this).attr("id").substring(0, $(this).attr("id").length - "-selector".length);
         if (visibleChannels.length === 0 || visibleChannels.includes(channel)) {
@@ -74,12 +76,39 @@ const generateTable = (visibleChannels) => {
     $("#capture").empty();
     $("#capture").append("<table id='capture-table'></table>");
     const table = $("#capture-table");
+
+    const colourMap = {
+        "level": "#8dd3c7",
+        "touching": "#ffffb3",
+        "overlapping": "#ffffb3",
+        "global layout": "#bebada",
+        "mark type": "#ccebc5",
+        "height": "#80b1d3",
+        "width": "#80b1d3",
+        "horizontal-position-order": "#80b1d3",
+        "horizontal-order": "#80b1d3",
+        "vertical-position-order": "#80b1d3",
+        "vertical-order": "#80b1d3",
+        "spread": "#fdb462",
+        "span": "#fdb462",
+        "radial-position-order": "#fdb462",
+        "radial-order": "#fdb462",
+        "angular-position-order": "#fdb462",
+        "angular-order": "#fdb462",
+        "orientation": "#b3de69",
+        "shape": "#fccde5",
+        "thickness": "#d9d9d9",
+        "area": "#bc80bd",
+        "colour": "#ffed6f"
+    };
+
+    ["#8dd3c7","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#fccde5","#d9d9d9","#bc80bd","#ccebc5","#ffed6f"]
     
     const attemptEncodeConstant = (encodeName, value) => {
         if (value === "unselected") {
             throw Error(encodeName + " is unselected");
         } else {
-            table.append(`<tr><td>${encodeName}</td><td>${value}</td></tr>`);
+            table.append(`<tr style="background-color: ${colourMap[encodeName]}"><td>${encodeName}</td><td>${value}</td></tr>`);
         }
     };
 
@@ -87,7 +116,16 @@ const generateTable = (visibleChannels) => {
     attemptEncodeConstant("touching", $("#dropdown-touching").val());
     attemptEncodeConstant("overlapping", $("#dropdown-overlapping").val());
     attemptEncodeConstant("global layout", $("#dropdown-global-layout").val());
-    attemptEncodeConstant("mark type", $("#dropdown-mark-type").val());
+
+    const markTypeOption = $("#dropdown-mark-type").val();
+    const markDescription = $("#mark-name").val().trim();
+    if (markTypeOption === "unselected") {
+        throw Error("mark type is unselected");
+    } else if (markDescription.length === 0) {
+        throw Error("mark description is empty");
+    } else {
+        table.append(`<tr style="background-color: ${colourMap["mark type"]}"><td>mark type</td><td>${markTypeOption}</td><td>${markDescription}</td></tr>`);
+    }
 
     const attemptEncodeChannel = (channel, value, attribute) => {
         if (value === "unselected") {
@@ -95,11 +133,7 @@ const generateTable = (visibleChannels) => {
         } else if (value === "encoding" && attribute.length === 0) {
             throw Error(channel + " is encoding an attribute, but the attribute is empty");
         } else {
-            text = value;
-            if (value === "encoding") {
-                text += ": " + attribute;
-            }
-            table.append(`<tr><td>${channel}</td><td>${text}</td></tr>`);
+            table.append(`<tr style="background-color: ${colourMap[channel]}"><td>${channel}</td><td>${value}</td>${value === "encoding" ? "<td>" + attribute + "</td>" : ""}</tr>`);
         }
     };
 
@@ -181,8 +215,9 @@ const clearFields = () => {
     checkInputs();
 };
 
-$("#input-level").on("change", checkInputs)
+$("#input-level").on("change", checkInputs);
 $(".dropdown").on("change", checkInputs);
+$("#mark-name").on("change", checkInputs);
 $(".attribute-name").on("change", checkInputs);
 
 if ((new URL(window.location.href)).searchParams.has("value")) {
