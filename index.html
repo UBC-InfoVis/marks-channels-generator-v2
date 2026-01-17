@@ -8,13 +8,30 @@
 
     </head>
     <body style="margin: 0; min-height: 100vh;">
+        <h1>Marks & Channels Table Generator</h1>
+        <p>
+            This website is a tool for generating consistent, valid marks and channels tables.
+            <br>
+            It was designed for CPSC 447 at UBC. 
+        </p>
+        
         <div class="selector" id="level-selector">
             <label for="level">Level</label>
             <input type="number" min="1" max="9" id="input-level" value="1" inputmode="numeric">
         </div>
+
+        <div class="selector" id="mark-type-selector">
+            <label for="mark-type">Mark Type</label>
+            <select class="dropdown" name="mark-type" id="dropdown-mark-type">
+                <option value="unselected" selected="selected">Unselected</option>
+                <option value="point">Point</option>
+                <option value="path">Path</option>
+                <option value="poly">Poly</option>
+            </select>
+        </div>
         
         <div class="selector" id="touching-selector">
-            <label for="touching">Touching?</label>
+            <label for="touching">Do mark boundaries touch?</label>
             <select class="dropdown" name="touching" id="dropdown-touching">
                 <option value="unselected" selected="selected">Unselected</option>
                 <option value="yes">Yes</option>
@@ -23,7 +40,7 @@
         </div>
         
         <div class="selector" id="overlapping-selector">
-            <label for="overlapping">Overlapping?</label>
+            <label for="overlapping">Do mark boundaries overlap?</label>
             <select class="dropdown" name="overlapping" id="dropdown-overlapping">
                 <option value="unselected" selected="selected">Unselected</option>
                 <option value="yes">Yes</option>
@@ -40,17 +57,6 @@
                 <option value="other">Other</option>
             </select>
         </div>
-
-        <div class="selector" id="mark-type-selector">
-            <label for="mark-type">Mark Type</label>
-            <select class="dropdown" name="mark-type" id="dropdown-mark-type">
-                <option value="unselected" selected="selected">Unselected</option>
-                <option value="point">Point</option>
-                <option value="path">Path</option>
-                <option value="poly">Poly</option>
-            </select>
-            <input id="mark-name" type="text" maxlength="30"name="mark-name-descriptor">
-        </div>
         
         <div class="selector channel" id="height-selector">
             <label for="height">Height</label>
@@ -59,7 +65,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-height">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-height">
         </div>
         
         <div class="selector channel" id="width-selector">
@@ -69,7 +76,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-width">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-width">
         </div>
         
         <div class="selector channel" id="horizontal-position-order-selector">
@@ -79,7 +87,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-horizontal-position-order">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-horizontal-position-order">
         </div>
         
         <div class="selector channel" id="horizontal-order-selector">
@@ -89,7 +98,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-horizontal-order">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-horizontal-order">
         </div>
         
         <div class="selector channel" id="vertical-position-order-selector">
@@ -99,7 +109,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-vertical-position-order">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-vertical-position-order">
         </div>
         
         <div class="selector channel" id="vertical-order-selector">
@@ -109,7 +120,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-vertical-order">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-vertical-order">
         </div>
         
         <div class="selector channel" id="spread-selector">
@@ -119,7 +131,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-spread">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-spread">
         </div>
         
         <div class="selector channel" id="span-selector">
@@ -129,7 +142,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-span">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-span">
         </div>
         
         <div class="selector channel" id="radial-position-order-selector">
@@ -139,7 +153,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-radial-position-order">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-radial-position-order">
         </div>
         
         <div class="selector channel" id="radial-order-selector">
@@ -149,7 +164,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-radial-order">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-radial-order">
         </div>
         
         <div class="selector channel" id="angular-position-order-selector">
@@ -159,7 +175,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-angular-position-order">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-angular-position-order">
         </div>
         
         <div class="selector channel" id="angular-order-selector">
@@ -169,7 +186,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-angular-order">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-angular-order">
         </div>
         
         <div class="selector channel" id="orientation-selector">
@@ -179,7 +197,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-orientation">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-orientation">
         </div>
         
         <div class="selector channel" id="shape-selector">
@@ -189,7 +208,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-shape">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-shape">
         </div>
         
         <div class="selector channel" id="thickness-selector">
@@ -199,7 +219,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-thickness">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-thickness">
         </div>
         
         <div class="selector channel" id="area-selector">
@@ -209,7 +230,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-area">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-area">
         </div>
         
         <div class="selector channel" id="colour-selector">
@@ -219,7 +241,8 @@
                 <option value="encoding">Encoding</option>
                 <option value="uniform">Uniform</option>
             </select>
-            <input class="attribute-name" type="text" maxlength="30"name="channel-colour">
+            <p class="attribute-label">Attribute(s):</p>
+            <input class="attribute-name" type="text" maxlength="80" name="channel-colour">
         </div>
 
         
