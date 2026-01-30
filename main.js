@@ -239,7 +239,7 @@ const checkInputs = () => {
 
 const clearFields = () => {
     console.log("clearing");
-    const code = "1-u-u-u-u-s-s-s-s-s-s-s-s-s-s-s-s-s-s-s-s-s-s-s";
+    const code = "1-u-u-s-s-s-s-s-s-s-s-s-s-s-s-s-s-s-s-s-s-s-s-s";
     const url = new URL(window.location.href);
     url.searchParams.set("value", code);
     window.history.pushState("string", "Title", url.href);
