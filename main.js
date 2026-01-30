@@ -31,7 +31,7 @@ const setInputs = () => {
     const binaryMap = { "u": "unselected", "y": "yes", "n": "no" };
     const layoutMap = { "u": "unselected", "r": "rectilinear", "p": "polar", "o": "other" };
     const markTypeMap = { "s": "unselected", "i": "point", "t": "path", "l": "poly" };
-    const channelMap = { "s": "unselected", "c": "encoding", "h": "inherited", "i": "uniform" };
+    const channelMap = { "s": "unselected", "c": "encoding", "h": "inherited", "i": "uniform", "r": "varying" };
 
     $("#input-level").val(values[0]);
     $("#dropdown-touching").val(binaryMap[values[1]]);
@@ -139,8 +139,6 @@ const generateTable = (visibleChannels) => {
             throw Error(trimmedNiceChannel + " is unselected");
         } else if (value === "encoding" && attribute.length === 0) {
             throw Error(trimmedNiceChannel + " is encoding an attribute, but the attribute is empty");
-        } else if (value === "inherited" && +$("#input-level").val() === 1) {
-            throw Error(trimmedNiceChannel + " is inherited, but the level is set to 1, so there is no lower level mark to inherit it from");
         } else {
             table.append(`<tr><td style="${baseStyle} background-color: ${colourMap[channel]}">${niceChannel}</td><td style="${baseStyle} background-color: ${colourMap[channel]}">${value}</td>${value === "encoding" ? `<td style="${baseStyle} background-color: ${colourMap[channel]}">` + attribute + "</td>" : ""}</tr>`);
         }
