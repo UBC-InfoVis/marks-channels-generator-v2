@@ -29,7 +29,7 @@ const setInputs = () => {
     const values = decodeURIComponent(url.searchParams.get("value")).split(/\-(?![^(]*\))/);
     
     const binaryMap = { "u": "unselected", "y": "yes", "n": "no" };
-    const layoutMap = { "u": "unselected", "r": "rectilinear", "p": "polar", "o": "other" };
+    const layoutMap = { "s": "unselected", "c": "rectilinear", "l": "polar", "h": "other", "i": "uniform" };
     const markTypeMap = { "s": "unselected", "i": "point", "t": "path", "l": "poly" };
     const channelMap = { "s": "unselected", "c": "encoding", "h": "inherited", "i": "uniform", "r": "varying" };
 
@@ -55,8 +55,8 @@ const generateCode = (visibleChannels) => {
     code += $("#input-level").val() + "-";
     code += $("#dropdown-touching").val().substring(0, 1) + "-";
     code += $("#dropdown-overlapping").val().substring(0, 1) + "-";
-    code += $("#dropdown-global-layout").val().substring(0, 1) + "-";
-    code += $("#dropdown-local-layout").val().substring(0, 1) + "-";
+    code += $("#dropdown-global-layout").val().substring(2, 3) + "-";
+    code += $("#dropdown-local-layout").val().substring(2, 3) + "-";
     code += $("#dropdown-mark-type").val().substring(2, 3);
     $(".channel").each(function() {
         const channel = $(this).attr("id").substring(0, $(this).attr("id").length - "-selector".length);
@@ -195,7 +195,7 @@ const checkInputs = () => {
         visibleChannels.push("height", "width", "orientation");
     } else if (markType === "point" && localLayout === "polar") {
         visibleChannels.push("spread", "span", "orientation");
-    } else if (markType === "point" && localLayout === "other") {
+    } else if (markType === "point" && localLayout === "uniform") {
         visibleChannels.push("orientation");
     }
 
