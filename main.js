@@ -174,18 +174,18 @@ const checkInputs = () => {
         visibleChannels = ["shape", "thickness", "colour"];
     } else if (markType === "point" && globalLayout === "rectilinear") {
         visibleChannels = ["horizontal-position-order", "vertical-position-order"];
-        if ($("#dropdown-horizontal-position-order").val() === "uniform") {
+        if ($("#dropdown-horizontal-position-order").val() === "varying") {
             visibleChannels.push("horizontal-order");
         }
-        if ($("#dropdown-vertical-position-order").val() === "uniform") {
+        if ($("#dropdown-vertical-position-order").val() === "varying") {
             visibleChannels.push("vertical-order");
         }
     } else if (markType === "point" && globalLayout === "polar") {
         visibleChannels = ["radial-position-order", "angular-position-order"];
-        if ($("#dropdown-radial-position-order").val() === "uniform") {
+        if ($("#dropdown-radial-position-order").val() === "varying") {
             visibleChannels.push("radial-order");
         }
-        if ($("#dropdown-angular-position-order").val() === "uniform") {
+        if ($("#dropdown-angular-position-order").val() === "varying") {
             visibleChannels.push("angular-order");
         }
     }
